@@ -21,6 +21,8 @@ export interface Animal {
   hearts: number;
   reserved: boolean;
   deletedAt: null;
+  updatedAt?: Date;
+  createdAt?: Date;
 }
 
 const AnimalContextProvider: React.FC<Props> = ({ children }) => {
@@ -40,6 +42,7 @@ const AnimalContextProvider: React.FC<Props> = ({ children }) => {
           return res.json();
         })
         .then((data) => {
+          console.log(data);
           localStorage.setItem("animals", JSON.stringify(data));
           setAnimals(data);
         })

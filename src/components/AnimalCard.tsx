@@ -1,8 +1,7 @@
 import { Animal } from "../contexts/AnimalContextProvider";
 
-
-const AnimalCard: React.FC<Animal> = ({ _id, name, desc, hearts }: Animal) => (
-  <div key={_id}>
+const AnimalCard: React.FC<Animal> = ({ name, desc, hearts }: Animal) => (
+  <div>
     <div>
       <img src="https://dummyimage.com/720x400" alt="blog" />
       <div>
@@ -11,14 +10,7 @@ const AnimalCard: React.FC<Animal> = ({ _id, name, desc, hearts }: Animal) => (
         <div>
           <a>
             Learn More
-            <svg
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-              stroke-width="2"
-              fill="none"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            >
+            <svg viewBox="0 0 24 24" stroke="currentColor" fill="none">
               <path d="M5 12h14"></path>
               <path d="M12 5l7 7-7 7"></path>
             </svg>
