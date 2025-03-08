@@ -26,7 +26,10 @@ export interface Animal {
 }
 
 const AnimalContextProvider: React.FC<Props> = ({ children }) => {
-  const [animals, setAnimals] = useState<Animal[]>([]);
+  const [animals, setAnimals] = useState<Animal[]>(() => {
+    const storedAnimals = localStorage.getItem("animals");
+    return storedAnimals ? JSON.parse(storedAnimals) : [];
+  });
 
   useEffect(() => {
     const URI = `http://localhost:3000/admin/get/`;
@@ -42,7 +45,6 @@ const AnimalContextProvider: React.FC<Props> = ({ children }) => {
           return res.json();
         })
         .then((data) => {
-          console.log(data);
           localStorage.setItem("animals", JSON.stringify(data));
           setAnimals(data);
         })

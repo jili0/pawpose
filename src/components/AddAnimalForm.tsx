@@ -12,8 +12,8 @@ const AddAnimalForm: React.FC = () => {
     event.preventDefault();
     const nameInputValue = nameRef.current?.value;
     const descInputValue = descRef.current?.value;
-
-    fetch(`${import.meta.env.BACKEND_DOMAIN}/admin/post/single`, {
+    const URI = `http://localhost:3000/admin/post/single`;
+    fetch(URI, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ name: nameInputValue, desc: descInputValue }),
