@@ -1,6 +1,204 @@
-#root {
-  max-width: 1280px;
+/* VARIABLES */
+:root {
+  --primary-color: #f2d492;
+  --secondary-color: #202c39;
+  --tertiary-color: #333;
+}
+
+/* GENERAL */
+@font-face {
+  font-family: "Poppins-ExtraLight";
+  src: url("../src/fonts/Poppins/Poppins-ExtraLight.ttf");
+}
+@font-face {
+  font-family: "Poppins-Regular";
+  src: url("../src/fonts/Poppins/Poppins-Regular.ttf");
+}
+@font-face {
+  font-family: "Poppins-Medium";
+  src: url("../src/fonts/Poppins/Poppins-Medium.ttf");
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  overflow-x: hidden;
+}
+
+body {
+  font-family: "Poppins-ExtraLight", sans-serif;
+}
+
+header,
+footer,
+main {
+  padding-inline: max(1rem, 5vw);
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+a :hover {
+  opacity: 0.8;
+  cursor: pointer;
+}
+
+a :active {
+  opacity: 0.9;
+}
+
+button {
+  border: none;
+  cursor: pointer;
+}
+
+button:hover {
+  opacity: 0.8;
+}
+
+button:active {
+  opacity: 0.9;
+}
+
+button,
+input,
+textarea {
+  font: inherit;
+  border-radius: 1rem;
+  border: solid 1px var(--primary-color);
+  width: 100%;
+  padding: 0.4rem 0.8rem;
+  margin-block: 0.4rem;
+}
+
+/* UTILS */
+.nowrap {
+  white-space: nowrap;
+}
+
+.b {
+  border: solid 1px red;
+}
+
+/* HEADER */
+header {
+  padding: 1rem 2rem;
+  display: flex;
+}
+
+nav {
+  display: flex;
+  gap: 1rem;
+}
+
+/* HOME */
+.animal-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   margin: 0 auto;
-  padding: 2rem;
+  max-width: 1200px;
+  padding: 0 20px;
+}
+
+.animal-card {
+  background-color: var(--primary-color);
+  width: min(20rem, 90vw);
+  margin: 1rem;
+  padding: 1rem;
+  border-radius: 1rem;
+}
+
+.animal-card img {
+  width: 100%;
+  border-radius: 1rem;
+}
+
+.animal-card-info .animal-name {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+/* ABOUT */
+.contact {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: min(30rem, 85vw);
+  border: 0.4rem solid var(--primary-color);
+  border-radius: 1rem;
+  padding: 1rem;
+  margin: 1rem auto;
   text-align: center;
+}
+
+.contact h3 {
+  margin-top: 2rem;
+}
+
+/* ADMIN */
+form,
+.table {
+  width: min(30rem, 85vw);
+  margin: 1rem auto;
+  border: 0.4rem solid var(--primary-color);
+  border-radius: 1rem;
+}
+
+form {
+  padding: 1rem;
+}
+
+fieldset {
+  border: none;
+}
+
+legend {
+  font-weight: bold;
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+label {
+  display: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-color: var(--primary-color);
+  text-align: center;
+  border-style: hidden; 
+}
+
+thead,
+table button {
+  font-size: 0.8rem;
+}
+
+table button {
+  padding: 0.2rem;
+}
+
+th,
+td {
+  padding: 0.1rem 0.2rem;
+}
+
+/* FOOTER */
+footer {
+  background-color: var(--secondary-color);
+  color: #fff;
+  text-align: center;
+  padding: 1rem;
+  width: 100%;
+  margin-top: 5rem;
+  padding-top: 2rem;
+  padding-bottom: 15rem;
 }

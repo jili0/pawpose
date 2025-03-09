@@ -1,6 +1,6 @@
 const Contact: React.FC = () => {
   return (
-    <div>
+    <div className="contact">
       <h2>Contact Us</h2>
       <p>info@example.com</p>
       <p>001985512-243</p>

@@ -10,8 +10,8 @@ const TableRow: React.FC<TableRowProps> = ({ animal }) => {
   const { name, reserved, desc, _id } = animal;
   const { animals, setAnimals } = useContext(animalContext);
   const [isEditing, setIsEditing] = useState<boolean>(false);
-  const nameRef = useRef<HTMLInputElement>(null);
-  const descRef = useRef<HTMLInputElement>(null);
+  const nameRef = useRef<HTMLTextAreaElement>(null);
+  const descRef = useRef<HTMLTextAreaElement>(null);
   const [editName, setEditName] = useState<string>(name);
   const [editDesc, setEditDesc] = useState<string>(desc);
 
@@ -101,53 +101,51 @@ const TableRow: React.FC<TableRowProps> = ({ animal }) => {
   };
 
   return (
-    <>
-      <tr>
-        <td>
-          {isEditing ? (
-            <input
-              type="text"
-              name="name"
-              id="edit-name"
-              ref={nameRef}
-              value={editName}
-              onChange={(e) => setEditName(e.target.value)}
-            />
-          ) : (
-            name
-          )}
-        </td>
-        <td>{reserved.toString()}</td>
-        <td>
-          {isEditing ? (
-            <input
-              type="text"
-              name="desc"
-              id="edit-desc"
-              ref={descRef}
-              value={editDesc}
-              onChange={(e) => setEditDesc(e.target.value)}
-            />
-          ) : (
-            desc
-          )}
-        </td>
-        <td data-id={_id}>
-          {isEditing ? (
-            <>
-              <button onClick={confirm}>Confirm</button>
-              <button onClick={discard}>Discard</button>
-            </>
-          ) : (
-            <>
-              <button onClick={remove}>Remove</button>
-              <button onClick={reserve}>Toggle Reserve</button>
-              <button onClick={edit}>Edit</button>
-            </>
-          )}
-        </td>
-      </tr>
-    </>
+    <tr>
+      <td>
+        {isEditing ? (
+          <textarea
+            rows={5}
+            name="name"
+            id="edit-name"
+            ref={nameRef}
+            value={editName}
+            onChange={(e) => setEditName(e.target.value)}
+          />
+        ) : (
+          name
+        )}
+      </td>
+      <td>{reserved.toString()}</td>
+      <td>
+        {isEditing ? (
+          <textarea
+            rows={5}
+            name="desc"
+            id="edit-desc"
+            ref={descRef}
+            value={editDesc}
+            onChange={(e) => setEditDesc(e.target.value)}
+          />
+        ) : (
+          desc
+        )}
+      </td>
+      <td data-id={_id}>
+        {isEditing ? (
+          <>
+            <button onClick={confirm}>Confirm</button>
+            <button onClick={discard}>Discard</button>
+          </>
+        ) : (
+          <>
+            <button onClick={remove}>Remove</button>
+            <button onClick={reserve}>Toggle Reserve</button>
+            <button onClick={edit}>Edit</button>
+          </>
+        )}
+      </td>
+    </tr>
   );
 };
 

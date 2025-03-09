@@ -3,7 +3,7 @@ import { animalContext } from "../contexts/AnimalContextProvider.tsx";
 
 const AddAnimalForm: React.FC = () => {
   const nameRef = useRef<HTMLInputElement>(null);
-  const descRef = useRef<HTMLInputElement>(null);
+  const descRef = useRef<HTMLTextAreaElement>(null);
   const [name, setName] = useState<string>("");
   const [desc, setDesc] = useState<string>("");
   const { animals, setAnimals } = useContext(animalContext);
@@ -45,17 +45,19 @@ const AddAnimalForm: React.FC = () => {
             ref={nameRef}
             value={name}
             onChange={(e) => setName(e.target.value)}
+            placeholder="Name"
           />
         </div>
         <div>
           <label htmlFor="desc">Desc</label>
-          <input
-            type="text"
+          <textarea
             name="desc"
             id="desc"
             ref={descRef}
             value={desc}
             onChange={(e) => setDesc(e.target.value)}
+            placeholder="Description"
+            rows={4}
           />
         </div>
         <button>Add new animal</button>

@@ -5,7 +5,7 @@ import { animalContext } from "../contexts/AnimalContextProvider.tsx";
 const AnimalList = () => {
   const { animals } = useContext(animalContext);
   return (
-    <div>
+    <div className="animal-list">
       {animals?.map(({ _id, name, desc, hearts, reserved, deletedAt }) => (
         <AnimalCard
           key={_id}
