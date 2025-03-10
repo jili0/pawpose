@@ -1,18 +1,18 @@
 import { useRef, useState, useContext } from "react";
-import { animalContext } from "../contexts/AnimalContextProvider.tsx";
+import { AnimalContext } from "../contexts/AnimalContextProvider.tsx";
 
 const AddAnimalForm: React.FC = () => {
   const nameRef = useRef<HTMLInputElement>(null);
   const descRef = useRef<HTMLTextAreaElement>(null);
   const [name, setName] = useState<string>("");
   const [desc, setDesc] = useState<string>("");
-  const { animals, setAnimals } = useContext(animalContext);
+  const { animals, setAnimals } = useContext(AnimalContext);
 
   const add = (event: React.FormEvent) => {
     event.preventDefault();
     const nameInputValue = nameRef.current?.value;
     const descInputValue = descRef.current?.value;
-    const URI = `http://localhost:3000/admin/post/single`;
+    const URI = `${import.meta.env.VITE_BACKEND_URI}/admin/post/single`;
     fetch(URI, {
       method: "POST",
       headers: { "Content-Type": "application/json" },

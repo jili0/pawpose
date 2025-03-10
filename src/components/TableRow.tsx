@@ -1,5 +1,5 @@
 import { useContext, useState, useRef } from "react";
-import { animalContext } from "../contexts/AnimalContextProvider.tsx";
+import { AnimalContext } from "../contexts/AnimalContextProvider.tsx";
 import { Animal } from "../contexts/AnimalContextProvider.tsx";
 
 interface TableRowProps {
@@ -8,7 +8,7 @@ interface TableRowProps {
 
 const TableRow: React.FC<TableRowProps> = ({ animal }) => {
   const { name, reserved, desc, _id } = animal;
-  const { animals, setAnimals } = useContext(animalContext);
+  const { animals, setAnimals } = useContext(AnimalContext);
   const [isEditing, setIsEditing] = useState<boolean>(false);
   const nameRef = useRef<HTMLTextAreaElement>(null);
   const descRef = useRef<HTMLTextAreaElement>(null);
@@ -16,7 +16,7 @@ const TableRow: React.FC<TableRowProps> = ({ animal }) => {
   const [editDesc, setEditDesc] = useState<string>(desc);
 
   const remove = () => {
-    const URI = `http://localhost:3000/admin/delete/${_id.toString()}`;
+    const URI = `${import.meta.env.VITE_BACKEND_URI}/admin/delete/${_id.toString()}`;
 
     fetch(URI, {
       method: "DELETE",
@@ -36,7 +36,7 @@ const TableRow: React.FC<TableRowProps> = ({ animal }) => {
   };
 
   const reserve = () => {
-    const URI = `http://localhost:3000/admin/patch/${_id.toString()}`;
+    const URI = `${import.meta.env.VITE_BACKEND_URI}/admin/patch/${_id.toString()}`;
 
     const animal = animals.find((animal) => animal._id === _id);
     if (!animal) {
@@ -74,7 +74,7 @@ const TableRow: React.FC<TableRowProps> = ({ animal }) => {
   const confirm = () => {
     const animal = animals.find((animal) => animal._id == _id);
     const newAnimal = { ...animal, name: editName, desc: editDesc };
-    const URI = `http://localhost:3000/admin/put/${_id.toString()}`;
+    const URI = `${import.meta.env.VITE_BACKEND_URI}/admin/put/${_id.toString()}`;
     fetch(URI, {
       method: "PUT",
       headers: { "Content-Type": "application/json" },

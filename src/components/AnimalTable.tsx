@@ -1,9 +1,9 @@
 import { useContext } from "react";
-import { animalContext } from "../contexts/AnimalContextProvider";
+import { AnimalContext } from "../contexts/AnimalContextProvider";
 import TableRow from "./TableRow";
 
 const AnimalTable: React.FC = () => {
-  const { animals } = useContext(animalContext);
+  const { animals } = useContext(AnimalContext);
 
   return (
     <div className="table">

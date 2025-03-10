@@ -5,7 +5,7 @@ interface AnimalContextType {
   setAnimals: React.Dispatch<React.SetStateAction<Animal[]>>;
 }
 
-export const animalContext = createContext<AnimalContextType>({
+export const AnimalContext = createContext<AnimalContextType>({
   animals: [],
   setAnimals: () => {},
 });
@@ -32,7 +32,7 @@ const AnimalContextProvider: React.FC<Props> = ({ children }) => {
   });
 
   useEffect(() => {
-    const URI = `http://localhost:3000/admin/get/`;
+    const URI = `${import.meta.env.VITE_BACKEND_URI}/admin/get/`;
 
     const fetchAndUpdateAnimals = () => {
       fetch(URI, {
@@ -54,9 +54,9 @@ const AnimalContextProvider: React.FC<Props> = ({ children }) => {
   }, []);
 
   return (
-    <animalContext.Provider value={{ animals, setAnimals }}>
+    <AnimalContext.Provider value={{ animals, setAnimals }}>
       {children}
-    </animalContext.Provider>
+    </AnimalContext.Provider>
   );
 };
 
