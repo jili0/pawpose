@@ -3,11 +3,15 @@ import { createContext, useState, useEffect, ReactNode } from "react";
 interface AnimalContextType {
   animals: Animal[];
   setAnimals: React.Dispatch<React.SetStateAction<Animal[]>>;
+  isLoading: boolean;
+  error: string | null;
 }
 
 export const AnimalContext = createContext<AnimalContextType>({
   animals: [],
   setAnimals: () => {},
+  isLoading: true,
+  error: null,
 });
 
 interface Props {
@@ -30,17 +34,26 @@ const AnimalContextProvider: React.FC<Props> = ({ children }) => {
     const storedAnimals = localStorage.getItem("animals");
     return storedAnimals ? JSON.parse(storedAnimals) : [];
   });
+  const [isLoading, setIsLoading] = useState<boolean>(true);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    const URI = `${import.meta.env.VITE_BACKEND_URI}/admin/get/`;
+    setIsLoading(true);
+    const URI = `${import.meta.env.VITE_BACKEND_URI}/get/`;
 
     const fetchAndUpdateAnimals = () => {
       fetch(URI, {
         method: "GET",
       })
         .then((res) => {
+          setIsLoading(false);
           if (!res.ok) {
-            throw new Error(`HTTP error! Status: ${res.status}`);
+            if (res.status === 404) {
+              setError("There are no animals in the database");
+            } else {
+              setError(`Error fetching data, status: ${res.status}`);
+            }
+            throw new Error(`Error fetching data, status: ${res.status}`);
           }
           return res.json();
         })
@@ -54,7 +67,7 @@ const AnimalContextProvider: React.FC<Props> = ({ children }) => {
   }, []);
 
   return (
-    <AnimalContext.Provider value={{ animals, setAnimals }}>
+    <AnimalContext.Provider value={{ animals, setAnimals, isLoading, error }}>
       {children}
     </AnimalContext.Provider>
   );

@@ -12,7 +12,7 @@ const AddAnimalForm: React.FC = () => {
     event.preventDefault();
     const nameInputValue = nameRef.current?.value;
     const descInputValue = descRef.current?.value;
-    const URI = `${import.meta.env.VITE_BACKEND_URI}/admin/post/single`;
+    const URI = `${import.meta.env.VITE_BACKEND_URI}/post/single`;
     fetch(URI, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
