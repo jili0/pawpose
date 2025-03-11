@@ -119,6 +119,17 @@ textarea {
   text-align: center;
 }
 
+.pagination {
+  display: flex;
+  justify-content: center;
+  gap: 0.4rem;
+  margin: 1rem;
+}
+
+.pagination button:hover {
+  background-color: var(--primary-color);
+}
+
 /* HEADER */
 header {
   padding: 1rem 2rem;
