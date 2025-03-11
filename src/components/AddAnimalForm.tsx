@@ -30,7 +30,7 @@ const AddAnimalForm: React.FC = () => {
         localStorage.setItem("animals", JSON.stringify(newAnimals));
         setAnimals(newAnimals);
       })
-      .catch((err) => console.error("Error", err));
+      .catch((err) => console.error(err));
   };
   return (
     <form id="new-animal" onSubmit={add}>

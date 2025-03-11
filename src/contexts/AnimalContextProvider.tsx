@@ -65,7 +65,7 @@ const AnimalContextProvider: React.FC<Props> = ({ children }) => {
           localStorage.setItem("animals", JSON.stringify(data));
           setAnimals(data);
         })
-        .catch((err) => console.error("Error", err));
+        .catch((err) => console.error(err));
     };
     fetchAndUpdateAnimals();
   }, []);

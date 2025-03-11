@@ -32,7 +32,7 @@ const TableRow: React.FC<TableRowProps> = ({ animal }) => {
         localStorage.setItem("animals", JSON.stringify(animalsCopie));
         setAnimals(animalsCopie);
       })
-      .catch((err) => console.error("Error", err));
+      .catch((err) => console.error(err));
   };
 
   const reserve = () => {
@@ -64,7 +64,7 @@ const TableRow: React.FC<TableRowProps> = ({ animal }) => {
         localStorage.setItem("animals", JSON.stringify(animalsCopie));
         setAnimals(animalsCopie);
       })
-      .catch((err) => console.error("Error", err));
+      .catch((err) => console.error(err));
   };
 
   const edit = () => {
