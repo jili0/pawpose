@@ -20,7 +20,8 @@ const AnimalList = () => {
           />
         ))}
       </div>
-      <Pagination currentPage={3} totalPages={5} />
+
+      <Pagination />
     </>
   );
 };
