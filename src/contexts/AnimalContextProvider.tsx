@@ -51,7 +51,11 @@ const AnimalContextProvider: React.FC<Props> = ({ children }) => {
       })
         .then((res) => {
           if (!res.ok) {
-            throw new Error(`Error fetching data, status: ${res.status}`);
+            if (res.status === 404) {
+              throw new Error(`There are no animals in the database`);
+            } else {
+              throw new Error(`Error fetching data, status: ${res.status}`);
+            }
           }
           return res.json();
         })
