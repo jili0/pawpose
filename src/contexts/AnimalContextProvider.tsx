@@ -50,13 +50,7 @@ const AnimalContextProvider: React.FC<Props> = ({ children }) => {
         method: "GET",
       })
         .then((res) => {
-          setIsLoading(false);
           if (!res.ok) {
-            if (res.status === 404) {
-              setError("There are no animals in the database");
-            } else {
-              setError(`Error fetching data, status: ${res.status}`);
-            }
             throw new Error(`Error fetching data, status: ${res.status}`);
           }
           return res.json();
@@ -65,7 +59,10 @@ const AnimalContextProvider: React.FC<Props> = ({ children }) => {
           localStorage.setItem("animals", JSON.stringify(data));
           setAnimals(data);
         })
-        .catch((err) => console.error(err));
+        .catch((err) => {
+          setError(err.message || "unknown error");
+        })
+        .finally(() => setIsLoading(false));
     };
     fetchAndUpdateAnimals();
   }, []);

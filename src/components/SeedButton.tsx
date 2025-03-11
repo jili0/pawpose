@@ -87,20 +87,21 @@ const SeedButton = () => {
     })
       .then((res) => {
         if (!res.ok) {
-          setError(`There is an error adding Animals. Status: ${res.status}`);
-          throw new Error(
-            `There is an error adding Animals. Status: ${res.status}`
-          );
+          throw new Error(`HTTP error, status: ${res.status}`);
         }
         return res.json();
       })
       .then((data) => {
         alert("successfully added animals!");
-        setIsLoading(false);
         localStorage.setItem("animals", JSON.stringify(data));
         setAnimals(data);
       })
-      .catch((err) => console.error(err));
+      .catch((err) => {
+        setError(
+         err.message || "unknown error"
+        );
+      })
+      .finally(() => setIsLoading(false));
   };
 
   return <button onClick={seedAnimals}>Add Some Animals</button>;

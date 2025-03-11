@@ -8,7 +8,8 @@ interface TableRowProps {
 
 const TableRow: React.FC<TableRowProps> = ({ animal }) => {
   const { name, reserved, desc, _id } = animal;
-  const { animals, setAnimals } = useContext(AnimalContext);
+  const { animals, setAnimals, setIsLoading, setError } =
+    useContext(AnimalContext);
   const [isEditing, setIsEditing] = useState<boolean>(false);
   const nameRef = useRef<HTMLTextAreaElement>(null);
   const descRef = useRef<HTMLTextAreaElement>(null);
@@ -16,6 +17,7 @@ const TableRow: React.FC<TableRowProps> = ({ animal }) => {
   const [editDesc, setEditDesc] = useState<string>(desc);
 
   const remove = () => {
+    setIsLoading(true);
     const URI = `${import.meta.env.VITE_BACKEND_URI}/delete/${_id.toString()}`;
 
     fetch(URI, {
@@ -32,10 +34,14 @@ const TableRow: React.FC<TableRowProps> = ({ animal }) => {
         localStorage.setItem("animals", JSON.stringify(animalsCopie));
         setAnimals(animalsCopie);
       })
-      .catch((err) => console.error(err));
+      .catch((err) => {
+        setError(err.message || "unknown error");
+      })
+      .finally(() => setIsLoading(false));
   };
 
   const reserve = () => {
+    setIsLoading(true);
     const URI = `${import.meta.env.VITE_BACKEND_URI}/patch/${_id.toString()}`;
 
     const animal = animals.find((animal) => animal._id === _id);
@@ -64,7 +70,10 @@ const TableRow: React.FC<TableRowProps> = ({ animal }) => {
         localStorage.setItem("animals", JSON.stringify(animalsCopie));
         setAnimals(animalsCopie);
       })
-      .catch((err) => console.error(err));
+      .catch((err) => {
+        setError(err.message || "unknown error");
+      })
+      .finally(() => setIsLoading(false));
   };
 
   const edit = () => {
@@ -72,6 +81,7 @@ const TableRow: React.FC<TableRowProps> = ({ animal }) => {
   };
 
   const confirm = () => {
+    setIsLoading(true);
     const animal = animals.find((animal) => animal._id == _id);
     const newAnimal = { ...animal, name: editName, desc: editDesc };
     const URI = `${import.meta.env.VITE_BACKEND_URI}/put/${_id.toString()}`;
@@ -92,8 +102,11 @@ const TableRow: React.FC<TableRowProps> = ({ animal }) => {
         );
         localStorage.setItem("animals", JSON.stringify(animalsCopie));
         setAnimals(animalsCopie);
-      });
-    setIsEditing(false);
+      })
+      .catch((err) => {
+        setError(err.message || "unknown error");
+      })
+      .finally(() => setIsLoading(false));
   };
 
   const discard = () => {

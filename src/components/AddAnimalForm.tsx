@@ -6,10 +6,12 @@ const AddAnimalForm: React.FC = () => {
   const descRef = useRef<HTMLTextAreaElement>(null);
   const [name, setName] = useState<string>("");
   const [desc, setDesc] = useState<string>("");
-  const { animals, setAnimals } = useContext(AnimalContext);
+  const { animals, setAnimals, setIsLoading, setError } =
+    useContext(AnimalContext);
 
   const add = (event: React.FormEvent) => {
     event.preventDefault();
+    setIsLoading(true);
     const nameInputValue = nameRef.current?.value;
     const descInputValue = descRef.current?.value;
     const URI = `${import.meta.env.VITE_BACKEND_URI}/post/single`;
@@ -30,7 +32,11 @@ const AddAnimalForm: React.FC = () => {
         localStorage.setItem("animals", JSON.stringify(newAnimals));
         setAnimals(newAnimals);
       })
-      .catch((err) => console.error(err));
+      .catch((err) => {
+        setError(err.message || "unknown error");
+
+      })
+      .finally(() => setIsLoading(false));
   };
   return (
     <form id="new-animal" onSubmit={add}>
