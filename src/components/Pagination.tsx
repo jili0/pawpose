@@ -1,4 +1,4 @@
-import { useContext, useState, useEffect, use } from "react";
+import { useContext, useState, useEffect } from "react";
 import { AnimalContext } from "../contexts/AnimalContextProvider.tsx";
 
 const Pagination: React.FC = () => {
