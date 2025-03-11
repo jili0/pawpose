@@ -39,6 +39,12 @@ main {
   padding-inline: max(1rem, 5vw);
 }
 
+main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
 a {
   text-decoration: none;
   color: inherit;
@@ -93,24 +99,25 @@ textarea {
   border-bottom-color: transparent;
   border-radius: 50%;
   display: inline-block;
+  margin: 0 auto;
   box-sizing: border-box;
   animation: rotation 1s linear infinite;
-  }
+}
 
-  @keyframes rotation {
+@keyframes rotation {
   0% {
-      transform: rotate(0deg);
+    transform: rotate(0deg);
   }
   100% {
-      transform: rotate(360deg);
+    transform: rotate(360deg);
   }
-  } 
+}
 
-
-  .error {
-    color: red;
-    font-size: 0.8rem;
-  }
+.error {
+  color: red;
+  font-size: 0.8rem;
+  text-align: center;
+}
 
 /* HEADER */
 header {
@@ -201,7 +208,7 @@ table {
   border-collapse: collapse;
   border-color: var(--primary-color);
   text-align: center;
-  border-style: hidden; 
+  border-style: hidden;
 }
 
 thead,
