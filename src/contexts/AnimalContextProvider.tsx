@@ -4,14 +4,18 @@ interface AnimalContextType {
   animals: Animal[];
   setAnimals: React.Dispatch<React.SetStateAction<Animal[]>>;
   isLoading: boolean;
+  setIsLoading: React.Dispatch<React.SetStateAction<boolean>>;
   error: string | null;
+  setError: React.Dispatch<React.SetStateAction<string | null>>;
 }
 
 export const AnimalContext = createContext<AnimalContextType>({
   animals: [],
   setAnimals: () => {},
   isLoading: true,
+  setIsLoading: () => {},
   error: null,
+  setError: () => {},
 });
 
 interface Props {
@@ -67,7 +71,9 @@ const AnimalContextProvider: React.FC<Props> = ({ children }) => {
   }, []);
 
   return (
-    <AnimalContext.Provider value={{ animals, setAnimals, isLoading, error }}>
+    <AnimalContext.Provider
+      value={{ animals, setAnimals, isLoading, setIsLoading, error, setError }}
+    >
       {children}
     </AnimalContext.Provider>
   );
