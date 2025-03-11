@@ -25,7 +25,7 @@ const TableRow: React.FC<TableRowProps> = ({ animal }) => {
     })
       .then((res) => {
         if (!res.ok) {
-          throw new Error(`HTTP error! Status: ${res.status}`);
+          throw new Error(`HTTP error, status: ${res.status}`);
         }
         return res.json();
       })
@@ -33,6 +33,9 @@ const TableRow: React.FC<TableRowProps> = ({ animal }) => {
         const animalsCopie = animals.filter((animal) => animal._id !== _id);
         localStorage.setItem("animals", JSON.stringify(animalsCopie));
         setAnimals(animalsCopie);
+        if (animalsCopie.length === 0) {
+          setError("There are no animals in the database");
+        }
       })
       .catch((err) => {
         setError(err.message || "unknown error");
@@ -59,7 +62,7 @@ const TableRow: React.FC<TableRowProps> = ({ animal }) => {
     })
       .then((res) => {
         if (!res.ok) {
-          throw new Error(`HTTP error! Status: ${res.status}`);
+          throw new Error(`HTTP error, status: ${res.status}`);
         }
         return res.json();
       })
@@ -92,7 +95,7 @@ const TableRow: React.FC<TableRowProps> = ({ animal }) => {
     })
       .then((res) => {
         if (!res.ok) {
-          throw new Error(`HTTP error! Status: ${res.status}`);
+          throw new Error(`HTTP error, status: ${res.status}`);
         }
         return res.json();
       })

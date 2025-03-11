@@ -6,7 +6,7 @@ import Error from "../components/Error.tsx";
 
 const Home: React.FC = () => {
   const { isLoading, error } = useContext(AnimalContext);
-  return <>{isLoading ? <Loader /> : error ? <Error error={error} /> : <AnimalList />}</>;
+  return <>{isLoading ? <Loader /> : error ? <Error /> : <AnimalList />}</>;
 };
 
 export default Home;

@@ -11,13 +11,7 @@ const Admin: React.FC = () => {
     <>
       <AddAnimalForm />
 
-      {isLoading ? (
-        <Loader />
-      ) : error ? (
-        <Error error={error} />
-      ) : (
-        <AnimalTable />
-      )}
+      {isLoading ? <Loader /> : error ? <Error /> : <AnimalTable />}
     </>
   );
 };

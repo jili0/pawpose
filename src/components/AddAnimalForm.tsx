@@ -22,7 +22,7 @@ const AddAnimalForm: React.FC = () => {
     })
       .then((res) => {
         if (!res.ok) {
-          throw new Error(`HTTP error! Status: ${res.status}`);
+          throw new Error(`HTTP error, status: ${res.status}`);
         }
         return res.json();
       })
