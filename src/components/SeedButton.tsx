@@ -10,71 +10,82 @@ const SeedButton = () => {
         name: "Bella",
         desc: "Eine freundliche Labrador-Hündin.",
         hearts: "5",
-        reserved: false,
-        deletedAt: null,
+      },
+      {
+        name: "Nala",
+        desc: "Eine abenteuerlustige Bengalkatze mit viel Energie.",
+        hearts: 6,
+      },
+      {
+        name: "Simba",
+        desc: "Ein mutiger junger Löwenkopfkaninchen.",
+        hearts: 4,
+        reserved: true,
+      },
+      {
+        name: "Felix",
+        desc: "Ein cleverer Dackel mit einem verspielten Charakter.",
+        hearts: 7,
+      },
+      {
+        name: "Kiki",
+        desc: "Ein neugieriger Wellensittich, der gerne zwitschert.",
+        hearts: 3,
+      },
+      {
+        name: "Balu",
+        desc: "Ein entspannter, gemütlicher Kater mit flauschigem Fell.",
+        hearts: 9,
+        reserved: true,
       },
       {
         name: "Max",
         desc: "Ein verspielter Kater mit viel Energie.",
         hearts: "8",
         reserved: true,
-        deletedAt: null,
       },
       {
         name: "Luna",
         desc: "Eine ruhige und liebevolle Hauskatze.",
         hearts: "3",
-        reserved: false,
-        deletedAt: null,
       },
       {
         name: "Rocky",
         desc: "Ein treuer Schäferhund mit Wachinstinkt.",
         hearts: "10",
-        reserved: false,
-        deletedAt: null,
       },
       {
         name: "Milo",
         desc: "Ein neugieriger Hamster mit goldbraunem Fell.",
         hearts: "2",
         reserved: true,
-        deletedAt: null,
       },
       {
         name: "Daisy",
         desc: "Ein kleiner, verspielter Zwergkaninchen.",
         hearts: "6",
-        reserved: false,
-        deletedAt: null,
       },
       {
         name: "Charlie",
         desc: "Ein Papagei, der gerne spricht.",
         hearts: "7",
         reserved: true,
-        deletedAt: null,
       },
       {
         name: "Coco",
         desc: "Eine verspielte Meerschweinchen-Dame.",
         hearts: "4",
-        reserved: false,
-        deletedAt: null,
       },
       {
         name: "Oscar",
         desc: "Ein ruhiger Goldfisch im Aquarium.",
         hearts: "1",
-        reserved: false,
-        deletedAt: null,
       },
       {
         name: "Buddy",
         desc: "Ein energiegeladener Border Collie.",
         hearts: "9",
         reserved: true,
-        deletedAt: null,
       },
     ];
 
@@ -97,9 +108,7 @@ const SeedButton = () => {
         setAnimals(data);
       })
       .catch((err) => {
-        setError(
-         err.message || "unknown error"
-        );
+        setError(err.message || "unknown error");
       })
       .finally(() => setIsLoading(false));
   };
