@@ -88,10 +88,6 @@ textarea {
   white-space: nowrap;
 }
 
-.b {
-  border: solid 1px red;
-}
-
 .loader {
   width: 48px;
   height: 48px;
