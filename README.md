@@ -1,4 +1,4 @@
-# 🐾 PawPals – Find the Perfect Home for Dogs!
+# 🐾 Pawpose – Find the Perfect Home for Dogs!
 
 A modern web application built with React & TypeScript that connects shelter dogs with their forever homes.
 
