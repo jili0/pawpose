@@ -8,12 +8,13 @@ const AnimalList = () => {
   return (
     <>
       <div className="animal-list">
-        {animals?.map(({ _id, name, desc, hearts, reserved, deletedAt }) => (
+        {animals?.map(({ _id, name, desc, imageUrl, hearts, reserved, deletedAt }) => (
           <AnimalCard
             key={_id}
             _id={_id}
             name={name}
             desc={desc}
+            imageUrl={imageUrl}
             hearts={hearts}
             reserved={reserved}
             deletedAt={deletedAt}

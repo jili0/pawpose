@@ -26,6 +26,7 @@ export interface Animal {
   _id: number;
   name: string;
   desc: string;
+  imageUrl: string;
   hearts: number;
   reserved: boolean;
   deletedAt: null;
