@@ -4,8 +4,10 @@ import { AnimalContext } from "../contexts/AnimalContextProvider.tsx";
 const AddAnimalForm: React.FC = () => {
   const nameRef = useRef<HTMLInputElement>(null);
   const descRef = useRef<HTMLTextAreaElement>(null);
+  const imageUrlRef = useRef<HTMLInputElement>(null);
   const [name, setName] = useState<string>("");
   const [desc, setDesc] = useState<string>("");
+  const [imageUrl, setImageUrl] = useState<string>("");
   const { animals, setAnimals, setIsLoading, setError } =
     useContext(AnimalContext);
 
@@ -14,11 +16,16 @@ const AddAnimalForm: React.FC = () => {
     setIsLoading(true);
     const nameInputValue = nameRef.current?.value;
     const descInputValue = descRef.current?.value;
+    const imageUrlInputValue = imageUrlRef.current?.value;
     const URI = `${import.meta.env.VITE_BACKEND_URI}/post/single`;
     fetch(URI, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ name: nameInputValue, desc: descInputValue }),
+      body: JSON.stringify({ 
+        name: nameInputValue, 
+        desc: descInputValue,
+        imageUrl: imageUrlInputValue 
+      }),
     })
       .then((res) => {
         if (!res.ok) {
@@ -34,7 +41,6 @@ const AddAnimalForm: React.FC = () => {
       })
       .catch((err) => {
         setError(err.message || "unknown error");
-
       })
       .finally(() => setIsLoading(false));
   };
@@ -64,6 +70,18 @@ const AddAnimalForm: React.FC = () => {
             onChange={(e) => setDesc(e.target.value)}
             placeholder="Description"
             rows={4}
+          />
+        </div>
+        <div>
+          <label htmlFor="imageUrl">Image URL</label>
+          <input
+            type="text"
+            name="imageUrl"
+            id="imageUrl"
+            ref={imageUrlRef}
+            value={imageUrl}
+            onChange={(e) => setImageUrl(e.target.value)}
+            placeholder="Enter image URL"
           />
         </div>
         <button>Add new animal</button>
