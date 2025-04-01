@@ -1,54 +1,51 @@
-# React + TypeScript + Vite
+# 🐾 PawPals – Find the Perfect Home for Dogs!
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern web application built with React & TypeScript that connects shelter dogs with their forever homes.
 
-Currently, two official plugins are available:
+## ✨ Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Browse Animal Profiles 
+- Smart Pagination 
+- Administrative Dashboard 
+- Fully Responsive Design 
+- Real-time Updates 
 
-## Expanding the ESLint configuration
+## 🏗️ Project Architecture
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+### Frontend Structure
+- **Component-Based Design** - Modular components for improved maintainability
+- **Context API Integration** - Efficient state management across the application
+- **Form Handling** - User-friendly forms for managing animal data
+- **Image Optimization** - Consistent image display with fallback handling
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+### Key Components
+- `AnimalCard` - Display animal profiles in an attractive card format
+- `AnimalList` - Organize and present multiple animal profiles
+- `AnimalTable` - Administrative view for managing animal data
+- `AddAnimalForm` - User-friendly form for adding new animals
+- `Pagination` - Navigate through multiple pages of animal profiles
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## 💻 Technologies
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+- **React 18** - Modern UI library for building interactive interfaces
+- **TypeScript** - Type safety for more reliable code
+- **Vite** - Next-generation frontend tooling for faster development
+- **Context API** - State management without additional libraries
+- **Fetch API** - Clean, promise-based HTTP requests
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
-```
+## 📱 Preview
+
+<img src="app-preview/preview1.png" alt="PawPals Home Page" width="500"/>
+<p><em>Home page displaying animal cards with pagination</em></p>
+
+<img src="app-preview/preview2.png" alt="PawPals Footer" width="500"/>
+<p><em>Clean, minimalist footer</em></p>
+
+<img src="app-preview/preview3.png" alt="PawPals Contact Page" width="500"/>
+<p><em>Contact page</em></p>
+
+<img src="app-preview/preview4.png" alt="PawPals Admin Page" width="500"/>
+<p><em>Administrative interface for managing animal profiles</em></p>
+
+## 🤝 Contributing
+Contributions are welcome! Please feel free to submit a Pull Request.
