@@ -164,7 +164,6 @@ const TableRow: React.FC<TableRowProps> = ({ animal }) => {
             <img 
               src={imageUrl} 
               alt={`Image of ${name}`} 
-              style={{ maxWidth: "100px", maxHeight: "100px" }} 
             />
           ) : (
             "No image"
