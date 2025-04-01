@@ -35,16 +35,16 @@ A modern web application built with React & TypeScript that connects shelter dog
 
 ## 📱 Preview
 
-<img src="app-preview/preview1.png" alt="PawPals Home Page" width="500"/>
+<img src="app-preview/preview1.png" alt="Pawpose Home Page" width="500"/>
 <p><em>Home page displaying animal cards with pagination</em></p>
 
-<img src="app-preview/preview2.png" alt="PawPals Footer" width="500"/>
+<img src="app-preview/preview2.png" alt="Pawpose Footer" width="500"/>
 <p><em>Clean, minimalist footer</em></p>
 
-<img src="app-preview/preview3.png" alt="PawPals Contact Page" width="500"/>
+<img src="app-preview/preview3.png" alt="Pawpose Contact Page" width="500"/>
 <p><em>Contact page</em></p>
 
-<img src="app-preview/preview4.png" alt="PawPals Admin Page" width="500"/>
+<img src="app-preview/preview4.png" alt="Pawpose Admin Page" width="500"/>
 <p><em>Administrative interface for managing animal profiles</em></p>
 
 ## 🤝 Contributing
