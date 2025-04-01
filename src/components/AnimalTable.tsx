@@ -13,6 +13,7 @@ const AnimalTable: React.FC = () => {
             <th>Name</th>
             <th>Reserved</th>
             <th>Description</th>
+            <th>Image</th>
             <th>Actions</th>
           </tr>
         </thead>

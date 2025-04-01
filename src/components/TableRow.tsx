@@ -7,14 +7,16 @@ interface TableRowProps {
 }
 
 const TableRow: React.FC<TableRowProps> = ({ animal }) => {
-  const { name, reserved, desc, _id } = animal;
+  const { name, reserved, desc, imageUrl, _id } = animal;
   const { animals, setAnimals, setIsLoading, setError } =
     useContext(AnimalContext);
   const [isEditing, setIsEditing] = useState<boolean>(false);
   const nameRef = useRef<HTMLTextAreaElement>(null);
   const descRef = useRef<HTMLTextAreaElement>(null);
+  const imageUrlRef = useRef<HTMLTextAreaElement>(null);
   const [editName, setEditName] = useState<string>(name);
   const [editDesc, setEditDesc] = useState<string>(desc);
+  const [editImageUrl, setEditImageUrl] = useState<string>(imageUrl || '');
 
   const remove = () => {
     setIsLoading(true);
@@ -86,7 +88,7 @@ const TableRow: React.FC<TableRowProps> = ({ animal }) => {
   const confirm = () => {
     setIsLoading(true);
     const animal = animals.find((animal) => animal._id == _id);
-    const newAnimal = { ...animal, name: editName, desc: editDesc };
+    const newAnimal = { ...animal, name: editName, desc: editDesc, imageUrl: editImageUrl };
     const URI = `${import.meta.env.VITE_BACKEND_URI}/put/${_id.toString()}`;
     fetch(URI, {
       method: "PUT",
@@ -145,6 +147,28 @@ const TableRow: React.FC<TableRowProps> = ({ animal }) => {
           />
         ) : (
           desc
+        )}
+      </td>
+      <td>
+        {isEditing ? (
+          <textarea
+            rows={5}
+            name="imageUrl"
+            id="edit-imageUrl"
+            ref={imageUrlRef}
+            value={editImageUrl}
+            onChange={(e) => setEditImageUrl(e.target.value)}
+          />
+        ) : (
+          imageUrl ? (
+            <img 
+              src={imageUrl} 
+              alt={`Image of ${name}`} 
+              style={{ maxWidth: "100px", maxHeight: "100px" }} 
+            />
+          ) : (
+            "No image"
+          )
         )}
       </td>
       <td data-id={_id}>
